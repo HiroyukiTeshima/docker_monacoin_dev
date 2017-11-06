@@ -1,0 +1,11 @@
+version: '2.0'
+services:
+  monacoind:
+    build: ./monacoind
+    environment:
+      - "TZ=Asia/Tokyo"
+    tty: true
+    ports:
+      - "4200:4200"
+    volumes:
+      - ../monacoin:/root/.monacoin
