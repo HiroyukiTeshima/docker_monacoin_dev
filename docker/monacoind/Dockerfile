@@ -14,5 +14,4 @@ RUN ln -s /usr/share/zoneinfo/Japan /etc/localtime
 
 # monacoind install
 RUN yum install -y autogen automake libtool gcc gcc-c++ boost boost-devel openssl-devel libevent-devel libdb-cxx-devel libdb-cxx wget git make which
-//monacoind インストール
 RUN cd /usr/local/src;git clone https://github.com/monacoinproject/monacoin;cd monacoin;./autogen.sh;./configure --disable-wallet;make;make install;
