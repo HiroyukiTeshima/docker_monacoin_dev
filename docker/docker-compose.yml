@@ -9,3 +9,5 @@ services:
       - "4200:4200"
     volumes:
       - ../monacoin:/root/.monacoin
+      - ../test1:/var/monacoin/test1
+      - ../test2:/var/monacoin/test2
