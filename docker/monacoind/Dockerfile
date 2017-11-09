@@ -22,4 +22,4 @@ RUN mkdir /root/.monacoin
 COPY monacoin.conf /root/.monacoin
 
 #start
-#ENTRYPOINT [ "/usr/bin/monacoind" ]
+ENTRYPOINT [ "/usr/bin/monacoind" ]
