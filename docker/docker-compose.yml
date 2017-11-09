@@ -21,7 +21,7 @@ services:
       - "TZ=Asia/Tokyo"
     tty: true
     ports:
-      - "19100:19100"
+      - "19111:19111"
     volumes:
       - ../monacoin:/root/.monacoin
     hostname: monacoindsv
