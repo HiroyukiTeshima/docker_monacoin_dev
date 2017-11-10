@@ -1,13 +1,50 @@
 version: '2.0'
 services:
-  monacoind:
+  webapp:
+    build: ./webapp
+    environment:
+      - "TZ=Asia/Tokyo"
+    tty: true
+    ports:
+      - "8080:80"
+    volumes:
+      - ../webapp:/var/www/webapp
+    hostname: webapp
+    links:
+      - monacoindsv
+      - webapp-db
+    privileged: true
+
+  monacoindsv:
     build: ./monacoind
     environment:
       - "TZ=Asia/Tokyo"
     tty: true
     ports:
-      - "4200:4200"
+      - "19111:19111"
     volumes:
       - ../monacoin:/root/.monacoin
-      - ../test1:/var/monacoin/test1
-      - ../test2:/var/monacoin/test2
+    hostname: monacoindsv
+
+  webapp-db:
+    build: ./db
+    environment:
+      MYSQL_ROOT_PASSWORD: password
+      MYSQL_DATABASE: app
+      MYSQL_USER: appuser
+      MYSQL_PASSWORD: app123
+      MYSQL_HOST: ""
+      TZ: Asia/Tokyo
+    volumes_from:
+      - webapp-data
+    volumes:
+      - ../db:/docker-entrypoint-initdb.d
+    ports:
+      - "3306:3306"
+
+  webapp-data:
+    image: busybox
+    environment:
+      - "TZ=Asia/Tokyo"
+    volumes:
+      - ../data:/var/lib/mysql

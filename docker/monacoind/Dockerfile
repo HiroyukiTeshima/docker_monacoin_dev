@@ -18,8 +18,9 @@ RUN cd /usr/local/src;wget 'http://download.oracle.com/berkeley-db/db-4.8.30.NC.
 RUN cd /usr/local/src;git clone https://github.com/monacoinproject/monacoin;cd monacoin;./autogen.sh;./configure LDFLAGS="-L${BDB_PREFIX}/lib/" CPPFLAGS="-I${BDB_PREFIX}/include/";make;make install;
 
 # testnet
-#RUN mkdir /var/monacoin/;cd /var/monacoin/;mkdir test1 test2;
-#COPY test1.conf /var/monacoin/test1/monacoin.conf
-#COPY test2.conf /var/monacoin/test2/monacoin.conf
-# testnet 起動
-#RUN cd /var/monacoin/;monacoind -datadir=test1 -daemon;monacoind -datadir=test2 -daemon
+RUN mkdir /root/.monacoin
+COPY monacoin.conf /root/.monacoin
+RUN /usr/local/bin/monacoind
+
+#start
+#ENTRYPOINT [ "/usr/local/bin/monacoind" ]
