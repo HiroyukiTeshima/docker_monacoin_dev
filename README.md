@@ -2,12 +2,15 @@
 
 monacoinの開発環境です。
 以下のサーバが起動します
+
 ・monacoind実行サーバ
+
 ・webサーバ
+
 ・dbサーバ
 
 仮想環境の中身はmonacoind/Dockerfileを参照してください。必要に応じて最終行のconfigureコマンドの引数など変更してください。
-現時点ではウォレット無しのオプションを付加しています(--disable-wallet)。
+
 
 使い方
 clone後、
@@ -30,11 +33,14 @@ data ・・・・dbサーバのmysqlデータディレクトリ
 monacoindが起動するサーバ
     docker exec -it docker_monacoind_1 bash
 
-monacoindは起動していませんので、ログインしてmonacoindを起動してください。conf設定済みで、
-オプション無しで実行するとtestnetでサービスとして実行されます。
+monacoindは起動していませんので、ログインしてmonacoindを起動してください。conf設定済みで、オプション無しで実行するとtestnetでサービスとして実行されます。
+またrpc-jsonポートは19111ポートでフォワードしています。PCから接続可能です。
+またwebサーバからも同じポートでアクセスできます。
 
 apacheが起動するサーバ
     docker exec -it docker_webapp_1 bash
+80ポートを8080ポートにフォワードしています。
+
 
 mysqlが起動するサーバ
     docker exec -it docker_db_1 bash
