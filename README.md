@@ -31,6 +31,7 @@ data ・・・・dbサーバのmysqlデータディレクトリ
 以下のコマンドでログインができます。
 
 monacoindが起動するサーバ
+
     docker exec -it docker_monacoind_1 bash
 
 monacoindは起動していませんので、ログインしてmonacoindを起動してください。conf設定済みで、オプション無しで実行するとtestnetでサービスとして実行されます。
@@ -38,11 +39,13 @@ monacoindは起動していませんので、ログインしてmonacoindを起�
 またwebサーバからも同じポートでアクセスできます。
 
 apacheが起動するサーバ
+
     docker exec -it docker_webapp_1 bash
 80ポートを8080ポートにフォワードしています。
 
 
 mysqlが起動するサーバ
+
     docker exec -it docker_db_1 bash
 mysqlへのログインユーザやパスワードはdocker-compose.ymlを確認してください。
 
