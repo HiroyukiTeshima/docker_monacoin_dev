@@ -20,6 +20,7 @@ RUN cd /usr/local/src;git clone https://github.com/monacoinproject/monacoin;cd m
 # testnet
 RUN mkdir /root/.monacoin
 COPY monacoin.conf /root/.monacoin
+RUN /usr/local/bin/monacoind
 
 #start
-ENTRYPOINT [ "/usr/bin/monacoind" ]
+#ENTRYPOINT [ "/usr/local/bin/monacoind" ]
